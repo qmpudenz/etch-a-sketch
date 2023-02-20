@@ -1,0 +1,11 @@
+h1 {
+    color: red;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(16, 0fr);
+    grid-template-rows: repeat(16, 0fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
