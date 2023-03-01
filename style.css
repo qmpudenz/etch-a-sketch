@@ -1,11 +1,40 @@
 h1 {
-    color: red;
+    color: white;
+    text-align: center;
+    font-size: 4vw;
+    margin: 2px;
+}
+
+#grid {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(56, 0fr);
+    grid-template-rows: repeat(40, 0fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    border:solid;
+    border-color:red;
+    border-width:50px;
+    width: 56vw;
+    border-radius: 2%;
+    background-color: white;
+}
+
+#sizes {
+    width:20vw;
+    display:flex;
+    flex-direction: column;
+}
+
+#modes {
+    width:20vw;
+}
+
+#wrapper {
+    display:flex;
+    justify-content: center;
 }
 
 body {
-    display: grid;
-    grid-template-columns: repeat(16, 0fr);
-    grid-template-rows: repeat(16, 0fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    background-color: red;
 }
