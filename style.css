@@ -12,11 +12,9 @@ h1 {
 }
 
 #grid {
-  width: 40vw; /* Size of the grid */
-  height: 40vw;
+  width: 960px;
+  height: 960px;
   display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
   border: 2px solid #333;
 }
 
