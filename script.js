@@ -1,97 +1,20 @@
+function createGrid(size) {
+  let grid = document.getElementById("grid");
+  grid.innerHTML = ""; // Clear existing grid
 
-    for (let i=0; i < 2240; i++) {
-        let elementName = document.createElement('div');
-    elementName.style.width = "1vw";
-    elementName.style.height = "1vw";
-    elementName.style.backgroundColor = "white";
-    elementName.style.margin = "0px";
-    elementName.style.opacity = "0";
-
-    elementName.addEventListener('mouseover', function(){
-        elementName.style.backgroundColor = "black";
-        elementName.style.opacity = ".1";
-        elementName.addEventListener('mouseover', function(){
-            elementName.style.backgroundColor = "black";
-            elementName.style.opacity = ".3";
-            elementName.addEventListener('mouseover', function(){
-                elementName.style.backgroundColor = "black";
-                elementName.style.opacity = ".4";
-                elementName.addEventListener('mouseover', function(){
-                    elementName.style.backgroundColor = "black";
-                    elementName.style.opacity = ".5";
-                    elementName.addEventListener('mouseover', function(){
-                        elementName.style.backgroundColor = "black";
-                        elementName.style.opacity = ".6";
-                        elementName.addEventListener('mouseover', function(){
-                            elementName.style.backgroundColor = "black";
-                            elementName.style.opacity = ".7";
-                            elementName.addEventListener('mouseover', function(){
-                                elementName.style.backgroundColor = "black";
-                                elementName.style.opacity = ".8";
-                                elementName.addEventListener('mouseover', function(){
-                                    elementName.style.backgroundColor = "black";
-                                    elementName.style.opacity = ".9";
-                                    elementName.addEventListener('mouseover', function(){
-                                        elementName.style.backgroundColor = "black";
-                                        elementName.style.opacity = "1";
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
+  for (let i = 0; i < size * size; i++) {
+    let cell = document.createElement("div");
+    cell.style.opacity = "0";
+    cell.addEventListener("mouseover", function () {
+      let currentOpacity = parseFloat(cell.style.opacity);
+      if (currentOpacity < 1) {
+        cell.style.backgroundColor = "black";
+        cell.style.opacity = (currentOpacity + 0.1).toString();
+      }
     });
-});
-    document.getElementById('grid').appendChild(elementName);
-};
+    grid.appendChild(cell);
+  }
+}
 
-
-buttonName.addEventListener('click', function(){
-    for (let i=0; i < 450; i++) {
-        let elementName = document.createElement('div');
-    elementName.style.width = "25px";
-    elementName.style.height = "25px";
-    elementName.style.backgroundColor = "white";
-    elementName.style.margin = "0px";
-    elementName.style.opacity = "0";
-
-    elementName.addEventListener('mouseover', function(){
-        elementName.style.backgroundColor = "black";
-        elementName.style.opacity = ".1";
-        elementName.addEventListener('mouseover', function(){
-            elementName.style.backgroundColor = "black";
-            elementName.style.opacity = ".3";
-            elementName.addEventListener('mouseover', function(){
-                elementName.style.backgroundColor = "black";
-                elementName.style.opacity = ".4";
-                elementName.addEventListener('mouseover', function(){
-                    elementName.style.backgroundColor = "black";
-                    elementName.style.opacity = ".5";
-                    elementName.addEventListener('mouseover', function(){
-                        elementName.style.backgroundColor = "black";
-                        elementName.style.opacity = ".6";
-                        elementName.addEventListener('mouseover', function(){
-                            elementName.style.backgroundColor = "black";
-                            elementName.style.opacity = ".7";
-                            elementName.addEventListener('mouseover', function(){
-                                elementName.style.backgroundColor = "black";
-                                elementName.style.opacity = ".8";
-                                elementName.addEventListener('mouseover', function(){
-                                    elementName.style.backgroundColor = "black";
-                                    elementName.style.opacity = ".9";
-                                    elementName.addEventListener('mouseover', function(){
-                                        elementName.style.backgroundColor = "black";
-                                        elementName.style.opacity = "1";
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
-});
-    document.getElementById('grid').appendChild(elementName);
-};
-});
+// Initialize the grid with 16x16 size
+createGrid(16);
