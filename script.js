@@ -1,47 +1,65 @@
 let currentMode = "shades"; // Default mode
 
+// Event listeners for size buttons
 document
-  .getElementById("sizes")
-  .children[0].addEventListener("click", function () {
-    createGrid(16); // Large grid
+  .querySelectorAll(".size-button-container button")
+  .forEach((button, index) => {
+    button.addEventListener("click", () => {
+      switch (index) {
+        case 0:
+          createGrid(16);
+          break;
+        case 1:
+          createGrid(32);
+          break;
+        case 2:
+          createGrid(64);
+          break;
+        case 3:
+          // Add logic for custom size here, if needed
+          break;
+        default:
+          break;
+      }
+    });
   });
 
+// Event listeners for mode buttons
 document
-  .getElementById("sizes")
-  .children[1].addEventListener("click", function () {
-    createGrid(32); // Medium grid
+  .querySelectorAll(".modes-button-container button")
+  .forEach((button, index) => {
+    button.addEventListener("click", () => {
+      switch (index) {
+        case 0:
+          currentMode = "classic";
+          break;
+        case 1:
+          currentMode = "shades";
+          break;
+        case 2:
+          currentMode = "randomColor";
+          break;
+        default:
+          break;
+      }
+    });
   });
 
-document
-  .getElementById("sizes")
-  .children[2].addEventListener("click", function () {
-    createGrid(64); // Small grid
-  });
-
-document.getElementById("classic").addEventListener("click", function () {
-  currentMode = "classic";
-});
-
-document.getElementById("shades").addEventListener("click", function () {
-  currentMode = "shades";
-});
-
-document.getElementById("randomColor").addEventListener("click", function () {
-  currentMode = "randomColor";
-});
-
-function createGrid(size) {
+function createGrid(columns) {
+  // Renamed size to columns for clarity
   let grid = document.getElementById("grid");
   grid.innerHTML = ""; // Clear existing grid
 
-  // Adjust the grid layout according to the size
-  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+  let rows = Math.floor((columns * 3) / 4); // Calculate rows based on 4:3 ratio
 
-  for (let i = 0; i < size * size; i++) {
+  // Adjust the grid layout according to the columns and rows
+  grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+  for (let i = 0; i < columns * rows; i++) {
     let cell = document.createElement("div");
     cell.style.opacity = "0";
-    changeColorOnHover(cell); // Call the changeColorOnHover function here
+    changeColorOnHover(cell);
     grid.appendChild(cell);
   }
 }
@@ -73,7 +91,7 @@ function getRandomColor() {
   return color;
 }
 
-document.getElementById("createNewGrid").addEventListener("click", function () {
+document.getElementById("custom").addEventListener("click", function () {
   let size = prompt("Enter the size of the grid (e.g., 16 for a 16x16 grid):");
   size = parseInt(size);
   if (!isNaN(size) && size > 0) {
