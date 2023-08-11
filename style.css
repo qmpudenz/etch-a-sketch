@@ -12,8 +12,8 @@ h1 {
 }
 
 #grid {
-  width: 960px;
-  height: 960px;
+  width: 40vw;
+  height: 40vw;
   display: grid;
   border: 2px solid #333;
 }
